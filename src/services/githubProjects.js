@@ -10,7 +10,7 @@ const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours (weekly/daily auto sync)
 export const FALLBACK_PROJECTS = [
   {
     id: 'ps-lounge-manager',
-    repoName: 'Playstation',
+    repoName: 'Playstaion',
     title: 'PS Lounge Manager',
     subtitle: 'Offline Desktop Management System for PlayStation Lounges',
     desc: 'A production-ready offline desktop management system built for PlayStation gaming lounges. It manages live gaming sessions, sales, inventory, financial reporting, team access, working hours, monthly reporting, PDF exports, and native invoice printing — all without requiring internet access or external cloud services.',
@@ -29,7 +29,7 @@ export const FALLBACK_PROJECTS = [
       'Nodemailer',
       'react-i18next'
     ],
-    github: 'https://github.com/John-Remoun/Playstation',
+    github: 'https://github.com/John-Remoun/Playstaion',
     demo: '',
     photos: [
       'https://raw.githubusercontent.com/John-Remoun/Playstaion/main/portfolio-photos/cover.png',
