@@ -29,7 +29,7 @@ export const FALLBACK_PROJECTS = [
       'Nodemailer',
       'react-i18next'
     ],
-    github: 'https://github.com/John-Remoun/Playstation',
+    github: 'https://github.com/John-Remoun/Playstaion',
     demo: '',
     photos: [
       'https://raw.githubusercontent.com/John-Remoun/Playstaion/main/portfolio-photos/cover.png',
