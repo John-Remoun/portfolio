@@ -1,0 +1,111 @@
+.footer {
+  background: var(--bg, #0b0d13);
+  border-top: 1px solid var(--border, rgba(255, 255, 255, 0.06));
+  padding: 2.2rem 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-logo {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--gold, #c9a84c);
+  letter-spacing: .05em;
+}
+
+.footer-dot {
+  color: #64748b;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.footer-copy .g {
+  color: var(--gold, #c9a84c);
+  font-weight: 500;
+}
+
+/* CIRCULAR GOLD ICONS (EXACT MATCH TO ATTACHED IMAGE) */
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.circle-icon-btn {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold, #c9a84c);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.icon-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.circle-icon-btn svg {
+  stroke: var(--gold, #c9a84c);
+  transition: transform 0.3s ease;
+}
+
+/* GOLD RIPPLE RING EFFECT ON HOVER */
+.ring-pulse {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  opacity: 0;
+  transform: scale(0.85);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.circle-icon-btn:hover {
+  background: (--gold-glow, rgba(201, 168, 76, 0.08));
+  border-color: var(--gold, #c9a84c);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(201, 168, 76, 0.25);
+}
+
+.circle-icon-btn:hover .ring-pulse {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.circle-icon-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 600px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.2rem;
+  }
+}

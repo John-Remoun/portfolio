@@ -1,0 +1,9 @@
+.mglow {
+  position: fixed; top: 0; left: 0; pointer-events: none;
+  width: 560px; height: 560px; border-radius: 50%; z-index: 0;
+  background: radial-gradient(circle, rgba(201,168,76,.065) 0%, rgba(201,168,76,.025) 40%, transparent 70%);
+  will-change: transform; mix-blend-mode: screen;
+}
+@media (max-width: 768px) {
+  .mglow { width: 320px; height: 320px; }
+}

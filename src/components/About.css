@@ -1,0 +1,338 @@
+.about-section {
+  padding: 6rem 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* LEFT COLUMN */
+.about-subhead {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 1.4rem;
+  line-height: 1.35;
+}
+
+.about-text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #a0aec0;
+  margin-bottom: 1.2rem;
+}
+
+.about-text strong.g {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* SPECS CARD - TRANSPARENT DARK LUXURY */
+.specs-card {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(201, 168, 76, 0.18);
+  border-radius: 10px;
+  padding: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.specs-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.specs-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--gold);
+}
+
+.specs-title {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem 1rem;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spec-key {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.spec-val {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+/* RIGHT COLUMN & BLOCKS */
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.block-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 1.8rem;
+}
+
+.block-title svg {
+  stroke: var(--gold);
+}
+
+/* TIMELINE - CLEAN & ALIGNED */
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.tl-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+/* YEAR TEXT ON THE LEFT - NO OVERLAPPING */
+.tl-year-left {
+  width: 145px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-top: 1px;
+}
+
+.tl-year-text {
+  font-family: var(--mono);
+  font-size: 0.73rem;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+  white-space: normal;
+  display: block;
+}
+
+/* MARKER PERFECTLY CENTERED WITH TITLE */
+.tl-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 12px;
+  flex-shrink: 0;
+  padding-top: 5px;
+}
+
+.tl-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.8);
+  flex-shrink: 0;
+}
+
+.tl-line {
+  width: 1px;
+  flex: 1;
+  min-height: 45px;
+  background: linear-gradient(to bottom, rgba(201, 168, 76, 0.4), rgba(255, 255, 255, 0.05));
+  margin: 4px 0;
+}
+
+.tl-content {
+  padding-bottom: 1.8rem;
+  flex: 1;
+}
+
+.tl-role {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.tl-place {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+
+.tl-desc {
+  font-size: 0.82rem !important;
+  color: #64748b !important;
+  line-height: 1.5 !important;
+}
+
+/* CERTIFICATE CARDS - CLICKABLE LUXURY CARDS */
+.certs-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.luxury-cert-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.2rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+  text-decoration: none !important;
+}
+
+.cert-link-card:hover {
+  background: rgba(201, 168, 76, 0.04);
+  border-color: rgba(201, 168, 76, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(201, 168, 76, 0.1);
+}
+
+.cert-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.cert-link-card:hover .cert-icon-box {
+  background: var(--gold);
+}
+
+.cert-link-card:hover .cert-icon-box svg {
+  stroke: #000;
+}
+
+.cert-icon-box svg {
+  stroke: var(--gold);
+}
+
+.cert-details {
+  flex: 1;
+}
+
+.cert-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.cert-top-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cert-ext-arrow {
+  color: var(--gold);
+  transition: transform 0.25s ease;
+}
+
+.cert-link-card:hover .cert-ext-arrow {
+  transform: translate(2px, -2px);
+}
+
+.cert-tag {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  background: rgba(201, 168, 76, 0.1);
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.cert-year {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+.cert-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.cert-by {
+  font-size: 0.78rem;
+  color: var(--gold-dim);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.cert-card-desc {
+  font-size: 0.81rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+  .tl-year-left {
+    width: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .specs-card {
+    display: none !important;
+  }
+}

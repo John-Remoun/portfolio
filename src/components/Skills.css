@@ -1,0 +1,241 @@
+.skills-section {
+  padding: 5rem 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.skills-sub {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+}
+
+/* 1. TOP BLOCK: ENGINEERING COMPETENCIES IN 2 EQUAL COLUMNS */
+.competencies-block {
+  margin-bottom: 3.5rem;
+  width: 100%;
+}
+
+.bars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.8rem 4rem;
+  align-items: start;
+  width: 100%;
+}
+
+.skill-row {
+  margin-bottom: 0.4rem;
+  width: 100%;
+}
+
+.skill-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 7px;
+  width: 100%;
+}
+
+.skill-name {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.35;
+  flex: 1;
+  min-width: 0;
+}
+
+.skill-pct {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.skill-track {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.skill-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+  border-radius: 4px;
+  transition: width 1.1s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.45);
+}
+
+.skill-cat {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: #64748b;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+}
+
+/* 2. MIDDLE BLOCK: FULL WIDTH JSON CODE BLOCK */
+.skills-code-block {
+  margin-bottom: 3.5rem;
+  width: 100%;
+}
+
+.skills-code {
+  background: rgba(10, 10, 14, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.sc-head {
+  background: rgba(255, 255, 255, 0.025);
+  padding: 0.65rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+
+.sc-lang,
+.sc-file {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--gold-dim);
+}
+
+.sc-body {
+  padding: 1.2rem 1.4rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--gold-light);
+  line-height: 1.75;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* 3. BOTTOM BLOCK: TECHNICAL STACK 2-ROW COUNTER-MOVING INFINITE MARQUEE */
+.tech-stack-block {
+  width: 100%;
+}
+
+.tech-marquee-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+}
+
+.tech-marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.tech-marquee-track {
+  display: flex !important;
+  gap: 0.75rem;
+  width: max-content;
+}
+
+.tech-marquee-track.track-right {
+  animation: marqueeRight 24s linear infinite;
+}
+
+.tech-marquee-track.track-left {
+  animation: marqueeLeft 24s linear infinite;
+}
+
+.tech-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.tech-card {
+  flex: 0 0 120px;
+  width: 120px;
+  background: rgba(18, 18, 28, 0.75);
+  border: 1px solid rgba(201, 168, 76, 0.22);
+  border-radius: 12px;
+  padding: 0.75rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-card:hover {
+  background: rgba(201, 168, 76, 0.12);
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(201, 168, 76, 0.2);
+}
+
+.tech-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.tech-lbl {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+@keyframes marqueeRight {
+  0% { transform: translateX(-33.333%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes marqueeLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-33.333%); }
+}
+
+/* RESPONSIVE & MOBILE DESIGN */
+@media (max-width: 900px) {
+  .bars-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .competencies-block,
+  .skills-code-block,
+  .tech-stack-block {
+    margin-bottom: 2.2rem;
+  }
+
+  .skills-code-block {
+    display: none !important;
+  }
+
+  .tech-card {
+    flex: 0 0 105px;
+    width: 105px;
+    padding: 0.6rem 0.4rem;
+  }
+}

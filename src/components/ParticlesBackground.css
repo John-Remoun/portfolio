@@ -1,0 +1,10 @@
+/* src/components/ParticlesBackground.css */
+.global-particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* للسماح بالنقر والتفاعل مع عناصر الموقع بكل حرية */
+  z-index: 0; /* تحضيرها لتكون خلف كل عناصر الصفحات */
+}
