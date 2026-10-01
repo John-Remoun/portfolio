@@ -2,8 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./SplitFlapText.css";
 
 export default function SplitFlapText({
-  words = ["BACK-END DEV", "NODE.JS EXPERT", "REST API ARCHITECT", "SYSTEM DESIGNER"],
-  cycleDelay = 2500,
+  words = [
+    "FULL STACK DEVELOPER",
+    "FRONTEND DEVELOPER",
+    "REACT & NEXT.JS",
+    "BACKEND ENGINEER",
+    "NODE.JS & NEST.JS",
+    "REST & GRAPHQL APIS",
+    "SYSTEM ARCHITECTURE",
+  ],
+  cycleDelay = 2800,
 }) {
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(false);
@@ -14,7 +22,7 @@ export default function SplitFlapText({
       setTimeout(() => {
         setIndex((prev) => (prev + 1) % words.length);
         setFade(false);
-      }, 300);
+      }, 350);
     }, cycleDelay);
 
     return () => clearInterval(interval);

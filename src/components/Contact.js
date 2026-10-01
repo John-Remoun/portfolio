@@ -50,6 +50,17 @@ const SOCIALS = [
       </svg>
     ),
   },
+  {
+    name: 'GitHub',
+    handle: 'John-Remoun',
+    href: 'https://github.com/John-Remoun',
+    copyText: 'https://github.com/John-Remoun',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+      </svg>
+    ),
+  },
 ];
 
 export default function Contact() {
@@ -118,8 +129,7 @@ export default function Contact() {
               <span className="g">Remarkable Together</span>
             </h3>
             <p className="contact-sub">
-              Whether you have a project in mind, need a back-end architect,
-              or just want to talk code — my inbox is always open.
+              Whether you have a project in mind — my inbox is always open.
             </p>
 
             <a 
@@ -170,35 +180,9 @@ export default function Contact() {
 
           {/* RIGHT — ORIGINAL FORM WITH ARC */}
           <div className="contact-right reveal-r">
-            {sent ? (
-              <div className="sent-wrap">
-                <div className="sent-icon">✓</div>
-                <p className="sent-txt">Message formatted! Opening WhatsApp...</p>
-              </div>
-            ) : (
-              <form className="contact-form" onSubmit={submit} noValidate>
-                <div className="form-row">
-                  {fields.filter(f => !f.full).map(f => (
-                    <div key={f.name} className={`fgroup ${focus === f.name ? 'focused' : ''} ${form[f.name] ? 'filled' : ''}`}>
-                      <label className="flabel">{f.label}</label>
-                      <div className="input-wrap">
-                        <input
-                          className="finput"
-                          type={f.type}
-                          name={f.name}
-                          value={form[f.name]}
-                          onChange={change}
-                          placeholder={f.placeholder}
-                          onFocus={() => setFocus(f.name)}
-                          onBlur={() => setFocus('')}
-                        />
-                        <FieldArc />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {fields.filter(f => f.full && f.type !== 'area').map(f => (
+            <form className="contact-form" onSubmit={submit} noValidate>
+              <div className="form-row">
+                {fields.filter(f => !f.full).map(f => (
                   <div key={f.name} className={`fgroup ${focus === f.name ? 'focused' : ''} ${form[f.name] ? 'filled' : ''}`}>
                     <label className="flabel">{f.label}</label>
                     <div className="input-wrap">
@@ -216,35 +200,136 @@ export default function Contact() {
                     </div>
                   </div>
                 ))}
+              </div>
 
-                {fields.filter(f => f.type === 'area').map(f => (
-                  <div key={f.name} className={`fgroup ${focus === f.name ? 'focused' : ''} ${form[f.name] ? 'filled' : ''}`}>
-                    <label className="flabel">{f.label}</label>
-                    <div className="input-wrap">
-                      <textarea
-                        className="finput ftextarea"
-                        name={f.name}
-                        value={form[f.name]}
-                        onChange={change}
-                        placeholder={f.placeholder}
-                        rows={5}
-                        onFocus={() => setFocus(f.name)}
-                        onBlur={() => setFocus('')}
-                      />
-                      <FieldArc />
-                    </div>
+              {fields.filter(f => f.full && f.type !== 'area').map(f => (
+                <div key={f.name} className={`fgroup ${focus === f.name ? 'focused' : ''} ${form[f.name] ? 'filled' : ''}`}>
+                  <label className="flabel">{f.label}</label>
+                  <div className="input-wrap">
+                    <input
+                      className="finput"
+                      type={f.type}
+                      name={f.name}
+                      value={form[f.name]}
+                      onChange={change}
+                      placeholder={f.placeholder}
+                      onFocus={() => setFocus(f.name)}
+                      onBlur={() => setFocus('')}
+                    />
+                    <FieldArc />
                   </div>
-                ))}
+                </div>
+              ))}
 
-                <button type="submit" className="btn btn-gold form-submit">
-                  Send Message
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <line x1="22" y1="2" x2="11" y2="13"/>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                  </svg>
+              {fields.filter(f => f.type === 'area').map(f => (
+                <div key={f.name} className={`fgroup ${focus === f.name ? 'focused' : ''} ${form[f.name] ? 'filled' : ''}`}>
+                  <label className="flabel">{f.label}</label>
+                  <div className="input-wrap">
+                    <textarea
+                      className="finput ftextarea"
+                      name={f.name}
+                      value={form[f.name]}
+                      onChange={change}
+                      placeholder={f.placeholder}
+                      rows={5}
+                      onFocus={() => setFocus(f.name)}
+                      onBlur={() => setFocus('')}
+                    />
+                    <FieldArc />
+                  </div>
+                </div>
+              ))}
+
+              <div className="submit-btn-wrapper">
+                <button
+                  type="submit"
+                  className={`animated-send-btn form-submit ${sent ? 'is-sent' : ''}`}
+                >
+                  <div className="outline"></div>
+                  <div className="state state--default">
+                    <div className="icon">
+                      <svg
+                        width="1em"
+                        height="1em"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g style={{ filter: 'url(#shadow-send-btn)' }}>
+                          <path
+                            d="M14.2199 21.63C13.0399 21.63 11.3699 20.8 10.0499 16.83L9.32988 14.67L7.16988 13.95C3.20988 12.63 2.37988 10.96 2.37988 9.78001C2.37988 8.61001 3.20988 6.93001 7.16988 5.60001L15.6599 2.77001C17.7799 2.06001 19.5499 2.27001 20.6399 3.35001C21.7299 4.43001 21.9399 6.21001 21.2299 8.33001L18.3999 16.82C17.0699 20.8 15.3999 21.63 14.2199 21.63ZM7.63988 7.03001C4.85988 7.96001 3.86988 9.06001 3.86988 9.78001C3.86988 10.5 4.85988 11.6 7.63988 12.52L10.1599 13.36C10.3799 13.43 10.5599 13.61 10.6299 13.83L11.4699 16.35C12.3899 19.13 13.4999 20.12 14.2199 20.12C14.9399 20.12 16.0399 19.13 16.9699 16.35L19.7999 7.86001C20.3099 6.32001 20.2199 5.06001 19.5699 4.41001C18.9199 3.76001 17.6599 3.68001 16.1299 4.19001L7.63988 7.03001Z"
+                            fill="currentColor"
+                          ></path>
+                          <path
+                            d="M10.11 14.4C9.92005 14.4 9.73005 14.33 9.58005 14.18C9.29005 13.89 9.29005 13.41 9.58005 13.12L13.16 9.53C13.45 9.24 13.93 9.24 14.22 9.53C14.51 9.82 14.51 10.3 14.22 10.59L10.64 14.18C10.5 14.33 10.3 14.4 10.11 14.4Z"
+                            fill="currentColor"
+                          ></path>
+                        </g>
+                        <defs>
+                          <filter id="shadow-send-btn">
+                            <feDropShadow
+                              dx="0"
+                              dy="1"
+                              stdDeviation="0.6"
+                              floodOpacity="0.5"
+                            ></feDropShadow>
+                          </filter>
+                        </defs>
+                      </svg>
+                    </div>
+                    <p>
+                      <span style={{ '--i': 0 }}>S</span>
+                      <span style={{ '--i': 1 }}>e</span>
+                      <span style={{ '--i': 2 }}>n</span>
+                      <span style={{ '--i': 3 }}>d</span>
+                      <span style={{ '--i': 4 }}>M</span>
+                      <span style={{ '--i': 5 }}>e</span>
+                      <span style={{ '--i': 6 }}>s</span>
+                      <span style={{ '--i': 7 }}>s</span>
+                      <span style={{ '--i': 8 }}>a</span>
+                      <span style={{ '--i': 9 }}>g</span>
+                      <span style={{ '--i': 10 }}>e</span>
+                    </p>
+                  </div>
+                  <div className="state state--sent">
+                    <div className="icon">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        height="1em"
+                        width="1em"
+                        strokeWidth="0.5px"
+                        stroke="currentColor"
+                      >
+                        <g style={{ filter: 'url(#shadow-send-btn)' }}>
+                          <path
+                            fill="currentColor"
+                            d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z"
+                          ></path>
+                          <path
+                            fill="currentColor"
+                            d="M10.5795 15.5801C10.3795 15.5801 10.1895 15.5001 10.0495 15.3601L7.21945 12.5301C6.92945 12.2401 6.92945 11.7601 7.21945 11.4701C7.50945 11.1801 7.98945 11.1801 8.27945 11.4701L10.5795 13.7701L15.7195 8.6301C16.0095 8.3401 16.4895 8.3401 16.7795 8.6301C17.0695 8.9201 17.0695 9.4001 16.7795 9.6901L11.1095 15.3601C10.9695 15.5001 10.7795 15.5801 10.5795 15.5801Z"
+                          ></path>
+                        </g>
+                      </svg>
+                    </div>
+                    <p>
+                      <span style={{ '--i': 5 }}>S</span>
+                      <span style={{ '--i': 6 }}>e</span>
+                      <span style={{ '--i': 7 }}>n</span>
+                      <span style={{ '--i': 8 }}>t</span>
+                    </p>
+                  </div>
                 </button>
-              </form>
-            )}
+
+                {sent && (
+                  <div className="form-success-note">
+                    ✓ Message formatted! Opening WhatsApp...
+                  </div>
+                )}
+              </div>
+            </form>
           </div>
         </div>
       </div>

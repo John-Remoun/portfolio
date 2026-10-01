@@ -116,33 +116,38 @@
 }
 
 .sc-body {
-  padding: 1.2rem 1.4rem;
+  padding: 1rem 1.2rem;
   font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: 0.62rem;
   color: var(--gold-light);
-  line-height: 1.75;
-  white-space: pre;
-  overflow-x: auto;
+  line-height: 1.85;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow: hidden;
 }
 
 /* 3. BOTTOM BLOCK: TECHNICAL STACK 2-ROW COUNTER-MOVING INFINITE MARQUEE */
 .tech-stack-block {
   width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .tech-marquee-container {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.8rem;
   width: 100%;
   max-width: 100%;
+  position: relative;
   overflow: hidden;
-  mask-image: none !important;
-  -webkit-mask-image: none !important;
+  padding: 4.5rem 0 1.5rem 0;
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 
 .tech-marquee-wrapper {
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   width: 100%;
   max-width: 100%;
@@ -150,16 +155,16 @@
 
 .tech-marquee-track {
   display: flex !important;
-  gap: 0.75rem;
+  gap: 1.2rem;
   width: max-content;
 }
 
 .tech-marquee-track.track-right {
-  animation: marqueeRight 24s linear infinite;
+  animation: marqueeRight 36s linear infinite;
 }
 
 .tech-marquee-track.track-left {
-  animation: marqueeLeft 24s linear infinite;
+  animation: marqueeLeft 36s linear infinite;
 }
 
 .tech-marquee-track:hover {
@@ -167,41 +172,81 @@
 }
 
 .tech-card {
-  flex: 0 0 120px;
-  width: 120px;
-  background: rgba(18, 18, 28, 0.75);
-  border: 1px solid rgba(201, 168, 76, 0.22);
-  border-radius: 12px;
-  padding: 0.75rem 0.5rem;
+  flex: 0 0 85px;
+  width: 85px;
+  height: 85px;
+  background: rgba(16, 16, 24, 0.85);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  border-radius: 16px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  backdrop-filter: blur(8px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
 }
 
 .tech-card:hover {
-  background: rgba(201, 168, 76, 0.12);
+  background: rgba(26, 24, 18, 0.95);
   border-color: var(--gold);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(201, 168, 76, 0.2);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 
+    0 14px 30px rgba(0, 0, 0, 0.6), 
+    0 0 24px rgba(201, 168, 76, 0.35);
+  z-index: 100;
 }
 
 .tech-icon {
-  font-size: 1.15rem;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
 }
 
-.tech-lbl {
+.tech-card:hover .tech-icon {
+  transform: scale(1.12);
+}
+
+/* Tooltip badge ON TOP above the card */
+.tech-tooltip {
+  position: absolute;
+  top: -36px;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: #12100c;
+  color: var(--gold-light);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  padding: 4px 10px;
   font-family: var(--mono);
-  font-size: 0.62rem;
-  font-weight: 500;
-  color: var(--text);
-  text-align: center;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   white-space: nowrap;
-  letter-spacing: 0.02em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.95), 0 0 12px rgba(201, 168, 76, 0.3);
+  z-index: 200;
+}
+
+.tech-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  border-color: var(--gold) transparent transparent transparent;
+}
+
+.tech-card:hover .tech-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 @keyframes marqueeRight {
@@ -234,8 +279,19 @@
   }
 
   .tech-card {
-    flex: 0 0 105px;
-    width: 105px;
-    padding: 0.6rem 0.4rem;
+    flex: 0 0 72px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .tech-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tech-tooltip {
+    top: -38px;
+    font-size: 0.6rem;
+    padding: 4px 8px;
   }
 }

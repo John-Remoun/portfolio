@@ -230,9 +230,388 @@
   line-height: 1.6; 
 }
 
-.form-submit { 
-  align-self: flex-start; 
-  margin-top: .5rem; 
+/* ── ANIMATED SEND BUTTON (FROM FEATURES, ADAPTED TO GOLD THEME) ── */
+.submit-btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.animated-send-btn {
+  --primary: var(--gold);
+  --radius: 12px;
+
+  cursor: pointer;
+  border-radius: var(--radius);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  border: none;
+  background: linear-gradient(135deg, #181510 0%, #0d0c0a 100%);
+  box-shadow: 
+    0 0.5px 0.5px 1px rgba(201, 168, 76, 0.2),
+    0 10px 20px rgba(0, 0, 0, 0.5), 
+    0 4px 5px 0px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.35s var(--ease);
+  width: 100%;
+  padding: 16px 28px;
+  height: 56px;
+  font-family: var(--mono);
+  font-style: normal;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  overflow: hidden;
+}
+
+.animated-send-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 
+    0 0 1px 2px rgba(201, 168, 76, 0.4),
+    0 15px 30px rgba(0, 0, 0, 0.6), 
+    0 0 25px rgba(201, 168, 76, 0.2);
+  color: #ffffff;
+}
+
+.animated-send-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 1px 1px rgba(201, 168, 76, 0.3),
+    0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.animated-send-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(#14120e, #0a0907) padding-box,
+    linear-gradient(to bottom, rgba(201, 168, 76, 0.5), rgba(201, 168, 76, 0.1)) border-box;
+  z-index: 0;
+  transition: all 0.4s ease;
+}
+
+.animated-send-btn:hover::after {
+  transform: scale(1.03, 1.06);
+  box-shadow: inset 0 -1px 3px 0 rgba(201, 168, 76, 0.8);
+}
+
+.animated-send-btn::before {
+  content: "";
+  inset: 4px;
+  position: absolute;
+  background: linear-gradient(to top, #0d0c0a, #1a1711);
+  border-radius: 9px;
+  filter: blur(0.5px);
+  z-index: 1;
+}
+
+.animated-send-btn .state {
+  padding-left: 28px;
+  z-index: 2;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.animated-send-btn .state .icon {
+  position: absolute;
+  left: -4px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+}
+
+.animated-send-btn .state .icon svg {
+  overflow: visible;
+}
+
+.animated-send-btn .outline {
+  position: absolute;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  inset: -2px -3.5px;
+}
+
+.animated-send-btn .outline::before {
+  content: "";
+  position: absolute;
+  inset: -100%;
+  background: conic-gradient(
+    from 180deg,
+    transparent 60%,
+    var(--gold-light) 80%,
+    transparent 100%
+  );
+  animation: spin 2s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animated-send-btn:hover .outline {
+  opacity: 1;
+}
+
+.animated-send-btn:hover .outline::before {
+  animation-play-state: running;
+}
+
+/* Letters */
+.animated-send-btn .state p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+}
+
+.animated-send-btn .state p span {
+  display: block;
+  opacity: 0;
+  animation: slideDown 0.8s ease forwards calc(var(--i) * 0.03s);
+}
+
+.animated-send-btn:hover p span {
+  opacity: 1;
+  animation: wave 0.5s ease forwards calc(var(--i) * 0.02s);
+}
+
+.animated-send-btn:focus p span,
+.animated-send-btn.is-sent p span {
+  opacity: 1;
+  animation: disapear 0.6s ease forwards calc(var(--i) * 0.03s);
+}
+
+@keyframes wave {
+  30% {
+    opacity: 1;
+    transform: translateY(4px) translateX(0) rotate(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px) translateX(0) rotate(0);
+    color: var(--gold-light);
+    text-shadow: 0 0 10px rgba(201, 168, 76, 0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0) rotate(0);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) translateX(5px) rotate(-90deg);
+    color: var(--gold);
+    filter: blur(5px);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(4px) translateX(0) rotate(0);
+    filter: blur(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px) translateX(0) rotate(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0) rotate(0);
+  }
+}
+
+@keyframes disapear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(5px) translateY(20px);
+    color: var(--gold);
+    filter: blur(5px);
+  }
+}
+
+/* Plane flight */
+.animated-send-btn .state--default .icon svg {
+  animation: land 0.6s ease forwards;
+}
+
+.animated-send-btn:hover .state--default .icon {
+  transform: rotate(45deg) scale(1.25);
+  color: var(--gold-light);
+}
+
+.animated-send-btn:focus .state--default svg,
+.animated-send-btn.is-sent .state--default svg {
+  animation: takeOff 0.8s linear forwards;
+}
+
+.animated-send-btn:focus .state--default .icon,
+.animated-send-btn.is-sent .state--default .icon {
+  transform: rotate(0) scale(1.25);
+}
+
+@keyframes takeOff {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(70px) rotate(45deg) scale(2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(160px) rotate(45deg) scale(0);
+  }
+}
+
+@keyframes land {
+  0% {
+    transform: translateX(-60px) translateY(30px) rotate(-50deg) scale(2);
+    opacity: 0;
+    filter: blur(3px);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Contrail */
+.animated-send-btn .state--default .icon:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  width: 0;
+  left: -5px;
+  background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.8));
+}
+
+.animated-send-btn:focus .state--default .icon:before,
+.animated-send-btn.is-sent .state--default .icon:before {
+  animation: contrail 0.8s linear forwards;
+}
+
+@keyframes contrail {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+  8% {
+    width: 15px;
+  }
+  60% {
+    opacity: 0.7;
+    width: 80px;
+  }
+  100% {
+    opacity: 0;
+    width: 160px;
+  }
+}
+
+/* States */
+.animated-send-btn .state--default span:nth-child(4) {
+  margin-right: 6px;
+}
+
+.animated-send-btn .state--sent {
+  display: none;
+}
+
+.animated-send-btn .state--sent svg {
+  transform: scale(1.25);
+  margin-right: 8px;
+  color: var(--gold-light);
+}
+
+.animated-send-btn:focus .state--default,
+.animated-send-btn.is-sent .state--default {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.animated-send-btn:focus .state--sent,
+.animated-send-btn.is-sent .state--sent {
+  display: flex;
+}
+
+.animated-send-btn:focus .state--sent span,
+.animated-send-btn.is-sent .state--sent span {
+  opacity: 0;
+  animation: slideDown 0.8s ease forwards calc(var(--i) * 0.2s);
+}
+
+.animated-send-btn:focus .state--sent .icon svg,
+.animated-send-btn.is-sent .state--sent .icon svg {
+  opacity: 0;
+  animation: appear 1.2s ease forwards 0.8s;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(4) rotate(-40deg);
+    color: var(--gold);
+    filter: blur(4px);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(0.6);
+    filter: blur(1px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    color: var(--gold-light);
+  }
+}
+
+.form-success-note {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--gold);
+  margin-top: 0.3rem;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Sent State */
@@ -339,49 +718,50 @@
 @media (max-width: 768px) {
   .socials {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.85rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    width: 100%;
   }
 
   .social-row {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    gap: 0.65rem;
-    padding: 1.25rem 0.6rem;
-    min-height: 100px;
-    background: rgba(18, 18, 24, 0.75);
+    padding: 0;
+    aspect-ratio: 1;
+    width: 100%;
+    min-height: unset;
+    background: linear-gradient(135deg, #181510 0%, #0d0c0a 100%);
     border: 1px solid rgba(201, 168, 76, 0.25);
-    border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(10px);
+    transition: all 0.3s var(--ease);
   }
 
-  .social-row:hover {
-    transform: translateY(-3px);
-    background: rgba(201, 168, 76, 0.08);
+  .social-row:hover,
+  .social-row:active {
+    transform: translateY(-2px) scale(1.04);
+    background: rgba(201, 168, 76, 0.12);
     border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(201, 168, 76, 0.3);
   }
 
   .social-icon {
     color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .social-icon svg {
-    width: 26px;
-    height: 26px;
+    width: 22px;
+    height: 22px;
   }
 
-  .social-name {
-    font-family: var(--sans);
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #ffffff;
-  }
-
-  /* Hide handle text & action buttons inside mobile square cards */
+  /* Hide all text, child divs & side actions on mobile - ONLY icons visible */
+  .social-row > div,
+  .social-name,
   .social-handle,
   .social-right-actions {
     display: none !important;
